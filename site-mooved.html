@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Site moved — please visit our new address</title>
+
+  <!-- Optional: enable automatic redirect after 10 seconds -->
+  <!-- <meta http-equiv="refresh" content="10;url=https://new.example.com"> -->
+
+  <style>
+    :root{
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --accent: #0b5fff;
+      --accent-600: #084bd6;
+      --muted: #586374;
+      --radius: 12px;
+      --maxw: 720px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: light;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background: linear-gradient(180deg, var(--bg), #eef3fb 60%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      box-sizing:border-box;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--maxw);
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: 0 10px 30px rgba(12,34,63,0.08);
+      padding:36px;
+      box-sizing:border-box;
+      text-align:center;
+    }
+
+    .logo {
+      width:84px;
+      height:84px;
+      margin:0 auto 18px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background: linear-gradient(135deg,var(--accent),var(--accent-600));
+      color:#fff;
+      font-weight:700;
+      font-size:20px;
+      box-shadow: 0 6px 18px rgba(11,95,255,0.16);
+    }
+
+    h1{
+      margin:8px 0 6px;
+      font-size:20px;
+      line-height:1.2;
+      color:#0f1724;
+    }
+
+    p.lead{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      margin:18px 0 8px;
+      flex-wrap:wrap;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      border: none;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      box-shadow: 0 6px 18px rgba(11,95,255,0.18);
+    }
+    .btn-primary:active{ transform: translateY(1px); }
+    .btn-secondary{
+      background:transparent;
+      color:var(--accent-600);
+      border: 1px solid #e6eefc;
+      padding:11px 16px;
+    }
+
+    .meta{
+      margin-top:14px;
+      color:#9aa6b6;
+      font-size:13px;
+    }
+
+    .contact{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media (max-width:420px){
+      .card{ padding:20px; }
+      .logo { width:64px; height:64px; font-size:18px; }
+      .actions{ gap:8px }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="card" role="main" aria-labelledby="movedTitle">
+      <div class="logo" aria-hidden="true">USN</div>
+
+      <h1 id="movedTitle">This site has moved to a new address</h1>
+
+      <p class="lead">
+        We’ve moved to a new, improved location to serve you better. Click the button below to visit the new site now.
+      </p>
+
+      <div class="actions" role="group" aria-label="Site navigation actions">
+        <a class="btn btn-primary" href="https://new.example.com" rel="noopener noreferrer">
+          Visit the new site
+        </a>
+
+        <a class="btn btn-secondary" href="#" onclick="copyAndOpen(); return false">
+          Copy & Open (new tab)
+        </a>
+      </div>
+
+      <p class="meta">You will be redirected automatically in <span id="countdown">10</span> seconds.</p>
+
+      <p class="contact">
+        If you experience any issues, please contact <a href="mailto:admin@example.com">admin@example.com</a>.
+      </p>
+    </main>
+  </div>
+
+  <script>
+    // Customize this to the new URL
+    const NEW_URL = 'https://new.example.com';
+
+    // Countdown and redirect (10 seconds)
+    let seconds = 10;
+    const el = document.getElementById('countdown');
+    if (el) el.textContent = seconds;
+    const timer = setInterval(() => {
+      seconds--;
+      if (el) el.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.href = NEW_URL;
+      }
+    }, 1000);
+
+    // Secondary button copies and opens in a new tab (for convenience)
+    function copyAndOpen(){
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(NEW_URL).catch(()=>{});
+      }
+      // open new tab
+      window.open(NEW_URL, '_blank', 'noopener');
+    }
+  </script>
+</body>
+</html>
+
